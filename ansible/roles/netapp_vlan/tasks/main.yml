@@ -1,0 +1,25 @@
+---
+# tasks file for netapp_vlan
+- name: Create VLAN
+  na_ontap_net_vlan:
+    state: present
+    vlanid: "{{ item.1.vlanid }}"
+    node: "{{ item.0.cluster_node }}"
+    parent_interface: "{{ item.1.parent_interface }}"
+    username: "{{ netapp_username }}"
+    password: "{{ netapp_password }}"
+    hostname: "{{ netapp_hostname }}"
+  with_subelements:
+    - "{{ Netapp_VLAN }}"
+    - vlan
+
+# - name: Debug info
+#   debug:
+#     msg: "Debug: {{ item.0.cluster_node }}"
+#     #msg: "Debug: {{ item.1.vlanid }}"
+#     #msg: "Debug: {{ item.1.parent_interface }}"
+#   #with_dict: "{{ Netapp_VLAN | dict2items | json_query('[].value.vlan[]') }}"
+#   #loop: "{{ Netapp_VLAN | dict2items | json_query('[].value.vlan[]') }}"
+#   with_subelements:
+#     - "{{ Netapp_VLAN }}"
+#     - vlan

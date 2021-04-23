@@ -1,0 +1,50 @@
+Netapp_Broadcast_Domain:
+  test-be-iscsi01:
+    broadcast_ports:
+    - cluster1-01:e0c-100
+    - cluster1-01:e0d-100
+    - cluster1-02:e0c-100
+    - cluster1-02:e0d-100
+    ipspace: Default
+    mtu: 9000
+    name: test-be-iscsi01
+  test-be-iscsi02:
+    broadcast_ports:
+    - cluster1-01:e0c-400
+    - cluster1-01:e0d-400
+    - cluster1-02:e0c-400
+    - cluster1-02:e0d-400
+    ipspace: Default
+    mtu: 9000
+    name: test-be-iscsi02
+Netapp_SVM:
+  evx3300233:
+    allow_protocols: cifs
+    comment: Test Platform - CIFS
+    name: evx3300233
+    root_vol: evx3300233_root
+    root_vol_aggr: aggr1_cluster1_01
+    root_vol_security_style: unix
+Netapp_VLAN:
+  cluster1-01:
+    cluster_node: cluster1-01
+    vlan:
+    - parent_interface: e0c
+      vlanid: 100
+    - parent_interface: e0d
+      vlanid: 100
+    - parent_interface: e0c
+      vlanid: 400
+    - parent_interface: e0d
+      vlanid: 400
+  cluster1-02:
+    cluster_node: cluster1-02
+    vlan:
+    - parent_interface: e0c
+      vlanid: 100
+    - parent_interface: e0d
+      vlanid: 100
+    - parent_interface: e0c
+      vlanid: 400
+    - parent_interface: e0d
+      vlanid: 400

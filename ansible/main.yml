@@ -1,0 +1,6 @@
+- hosts: localhost
+  gather_facts: false
+  roles:
+  - role: netapp_vlan
+  # - role: netapp_broadcast_domain
+  # - role: netapp_svm
