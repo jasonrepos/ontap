@@ -9,6 +9,8 @@
     username: "{{ netapp_username }}"
     password: "{{ netapp_password }}"
     hostname: "{{ netapp_hostname }}"
+    https: "{{ https }}"
+    validate_certs: "{{ validate_certs }}"
   with_subelements:
     - "{{ Netapp_VLAN }}"
     - vlan

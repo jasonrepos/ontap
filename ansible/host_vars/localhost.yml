@@ -6,7 +6,7 @@ Netapp_Broadcast_Domain:
     - cluster1-02:e0c-100
     - cluster1-02:e0d-100
     ipspace: Default
-    mtu: 9000
+    mtu: 1500
     name: test-be-iscsi01
   test-be-iscsi02:
     broadcast_ports:
@@ -15,11 +15,11 @@ Netapp_Broadcast_Domain:
     - cluster1-02:e0c-400
     - cluster1-02:e0d-400
     ipspace: Default
-    mtu: 9000
+    mtu: 1500
     name: test-be-iscsi02
 Netapp_SVM:
   evx3300233:
-    allow_protocols: cifs
+    allowed_protocols: cifs
     comment: Test Platform - CIFS
     name: evx3300233
     root_vol: evx3300233_root
