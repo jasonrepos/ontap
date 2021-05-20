@@ -1,0 +1,18 @@
+---
+# tasks file for netapp_cifs_server
+- name: Create CIFS Server
+  na_ontap_cifs_server:
+    state: present
+    name: "{{ item.value.name }}"
+    domain: "{{ item.value.domain }}"
+    vserver: "{{ item.value.vserver }}"
+    admin_user_name: "{{ item.value.admin_user_name }}"
+    admin_password: "{{ item.value.admin_password }}"
+    ou: "{{ item.value.ou }}"
+    hostname: "{{ netapp_hostname }}"
+    username: "{{ netapp_username }}"
+    password: "{{ netapp_password }}"
+    https: "{{ https }}"
+    validate_certs: "{{ validate_certs }}"
+  with_dict: "{{ Netapp_CIFS_Server }}"
+  when: Netapp_CIFS_Server is defined

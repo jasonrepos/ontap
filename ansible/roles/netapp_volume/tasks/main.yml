@@ -1,0 +1,18 @@
+---
+# tasks file for netapp_ontap_volume
+- name: Create Volume
+  na_ontap_volume:
+    state: present
+    name: "{{ item.value.name }}"
+    aggregate_name: "{{ item.value.aggregate_name }}"
+    vserver: "{{ item.value.vserver }}"
+    size: "{{ item.value.size }}"
+    volume_security_style: "{{ item.value.volume_security_style }}"
+    junction_path: "{{ item.value.junction_path }}"
+    comment: "{{ item.value.comment }}"
+    username: "{{ netapp_username }}"
+    password: "{{ netapp_password }}"
+    hostname: "{{ netapp_hostname }}"
+    https: "{{ https }}"
+    validate_certs: "{{ validate_certs }}"
+  with_dict: "{{ Netapp_Volumes }}"
