@@ -1,0 +1,15 @@
+---
+# tasks file for netapp_broadcast_domain
+- name: create broadcast domain
+  na_ontap_broadcast_domain:
+    state: present
+    username: "{{ netapp_username }}"
+    password: "{{ netapp_password }}"
+    hostname: "{{ netapp_hostname }}"
+    https: "{{ https }}"
+    validate_certs: "{{ validate_certs }}"
+    name: "{{ item.value.name }}"
+    mtu: "{{ item.value.mtu }}"
+    ipspace: "{{ item.value.ipspace }}"
+    ports: "{{ item.value.broadcast_ports }}"
+  with_dict: "{{ Netapp_Broadcast_Domain }}"

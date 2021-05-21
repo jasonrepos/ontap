@@ -1,0 +1,29 @@
+---
+# tasks file for na_ontap_cifs
+- name: Create CIFS Share
+  na_ontap_cifs:
+    state: present
+    share_name: "{{ item.value.share_name }}"
+    path: "{{ item.value.path }}"
+    vserver: "{{ item.value.vserver }}"
+    hostname: "{{ netapp_hostname }}"
+    username: "{{ netapp_username }}"
+    password: "{{ netapp_password }}"
+    https: "{{ https }}"
+    validate_certs: "{{ validate_certs }}"
+  with_dict: "{{ Netapp_CIFS_Shares }}"
+
+# Delete everyone from the share ACL
+- name: Delete Everyone ACL
+  na_ontap_cifs_acl:
+    state: absent
+    share_name: "{{ item.value.share_name }}"
+    user_or_group: Everyone
+    vserver: "{{ item.value.vserver }}"
+    hostname: "{{ netapp_hostname }}"
+    username: "{{ netapp_username }}"
+    password: "{{ netapp_password }}"
+    https: "{{ https }}"
+    validate_certs: "{{ validate_certs }}"
+  with_dict: "{{ Netapp_CIFS_Shares }}"
+

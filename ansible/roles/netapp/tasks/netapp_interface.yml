@@ -1,0 +1,26 @@
+---
+# tasks file for na_ontap_interface
+- name: Configure SVM LIF's
+  na_ontap_interface:
+    state: present
+    admin_status: up
+    vserver: "{{ item.value.vserver }}"
+    interface_name: "{{ item.value.interface_name }}"
+    #service_policy: "{{ item.value.service_policy }}"
+    role: "{{ item.value.role }}"
+    protocols: "{{ item.value.protocols }}"
+    address: "{{ item.value.address }}"
+    netmask: "{{ item.value.netmask }}"
+    home_node: "{{ item.value.home_node }}"
+    home_port: "{{ item.value.home_port }}"
+    failover_policy: "{{ item.value.failover_policy }}"
+    #failover_group: "{{ item.value.failover_group }}"
+    firewall_policy: "{{ item.value.firewall_policy }}"
+    is_auto_revert: "{{ item.value.is_auto_revert }}"
+    hostname: "{{ netapp_hostname }}"
+    username: "{{ netapp_username }}"
+    password: "{{ netapp_password }}"
+    https: "{{ https }}"
+    validate_certs: "{{ validate_certs }}"
+  with_dict: "{{ Netapp_SVM_LIFs }}"
+

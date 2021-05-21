@@ -1,0 +1,92 @@
+---
+# tasks file for netapp
+
+# Create VLAN's
+- name: Configure VLAN's
+  block:
+
+  - name: Configure VLAN's
+    include: netapp_vlan.yml
+ 
+  when: 
+    - Netapp_VLAN is defined
+
+# Configure Broadcast Domains
+- name: Configure Broadcast Domains
+  block:
+
+  - name: Configure VLAN's
+    include: netapp_broadcast_domain.yml
+ 
+  when: 
+    - Netapp_Broadcast_Domain is defined
+
+# Configure SVM's
+- name: Configure SVM's
+  block:
+
+  - name: Configure SVM's
+    include: netapp_svm.yml
+ 
+  when: 
+    - Netapp_SVM is defined
+
+# Configure SVM LIF's
+- name: Configure SVM LIF's
+  block:
+
+  - name: Configure SVM LIF's
+    include: netapp_interface.yml
+ 
+  when: 
+    - Netapp_SVM_LIFs is defined
+
+# Configure Volumes
+- name: Configure Volumes
+  block:
+
+  - name: Configure Volumes
+    include: netapp_volumes.yml
+ 
+  when: 
+    - Netapp_Volumes is defined
+
+# Configure DNS
+- name: Configure DNS
+  block:
+
+  - name: Configure DNS
+    include: netapp_dns.yml
+ 
+  when: 
+    - Netapp_DNS is defined
+
+# Configure CIFS Server
+- name: Configure CIFS Server
+  block:
+
+  - name: Configure CIFS Server
+    include: netapp_cifs_server.yml
+ 
+  when: 
+    - Netapp_CIFS_Server is defined
+
+# Configure CIFS Shares
+- name: Configure CIFS Shares
+  block:
+
+  - name: Configure CIFS Shares
+    include: netapp_cifs.yml
+ 
+  when: 
+    - Netapp_CIFS_Shares is defined
+
+# Configure CIFS ACLs
+- name: Configure CIFS ACLs
+  block:
+
+  - name: Configure CIFS ACLs
+    include: netapp_cifs_acl.yml
+ 
+  when:
+    - Netapp_CIFS_Shares is defined

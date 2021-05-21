@@ -1,0 +1,14 @@
+---
+# tasks file for na_ontap_dns
+- name: Configure DNS
+  na_ontap_dns:
+    state: present
+    vserver: "{{ item.value.vserver }}"
+    domains: "{{ item.value.domains }}"
+    nameservers: "{{ item.value.nameservers }}"
+    hostname: "{{ netapp_hostname }}"
+    username: "{{ netapp_username }}"
+    password: "{{ netapp_password }}"
+    https: "{{ https }}"
+    validate_certs: "{{ validate_certs }}"
+  with_dict: "{{ Netapp_DNS }}"

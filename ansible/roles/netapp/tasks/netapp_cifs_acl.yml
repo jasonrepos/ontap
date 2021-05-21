@@ -1,0 +1,17 @@
+---
+# tasks file for na_ontap_cifs_acl
+- name: Configure CIFS ACL's
+  na_ontap_cifs_acl:
+    state: present
+    share_name: "{{ item.0.share_name }}"
+    user_or_group: "{{ item.1.user_or_group }}"
+    permission: "{{ item.1.permission }}"
+    vserver: "{{ item.0.vserver }}"
+    hostname: "{{ netapp_hostname }}"
+    username: "{{ netapp_username }}"
+    password: "{{ netapp_password }}"
+    https: "{{ https }}"
+    validate_certs: "{{ validate_certs }}"
+  with_subelements:
+    - "{{ Netapp_CIFS_Shares }}"
+    - acls

@@ -1,0 +1,17 @@
+---
+# tasks file for netapp_svm
+- name: Create SVM
+  na_ontap_svm:
+    state: present
+    name: "{{ item.value.name }}"
+    root_volume: "{{ item.value.root_vol }}"
+    root_volume_aggregate: "{{ item.value.root_vol_aggr }}"
+    root_volume_security_style: "{{ item.value.root_vol_security_style }}"
+    comment: "{{ item.value.comment }}"
+    allowed_protocols: "{{ item.value.allowed_protocols }}"
+    hostname: "{{ netapp_hostname }}"
+    username: "{{ netapp_username }}"
+    password: "{{ netapp_password }}"
+    https: "{{ https }}"
+    validate_certs: "{{ validate_certs }}"
+  with_dict: "{{ Netapp_SVM }}"

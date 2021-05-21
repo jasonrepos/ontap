@@ -7,10 +7,11 @@
     https: true
     validate_certs: false
   roles:
-  - role: netapp_vlan
-  - role: netapp_broadcast_domain
-  - role: netapp_svm
-  - role: netapp_volume
-  - role: netapp_cifs_server
+  - role: netapp
+  # - role: netapp_vlan
+  # - role: netapp_broadcast_domain
+  # - role: netapp_svm
+  # - role: netapp_volume
+  # - role: netapp_cifs_server
   # - role: netapp_broadcast_domain
   # - role: netapp_svm
