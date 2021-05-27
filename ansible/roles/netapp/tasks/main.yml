@@ -86,7 +86,7 @@
   block:
 
   - name: Configure CIFS ACLs
-    include: netapp_cifs_acl.yml
+    include_tasks: netapp_cifs_acl.yml
  
   when:
     - Netapp_CIFS_Shares is defined

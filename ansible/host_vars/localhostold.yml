@@ -71,7 +71,6 @@ Netapp_DNS:
     - demo.netapp.com
     nameservers:
     - 192.168.0.253
-    - 192.168.0.252
 Netapp_Volumes:
   evx3300233_testvol:
     name: evx3300233_testvol
@@ -100,8 +99,3 @@ Netapp_CIFS_Shares:
       permission: full_control
     - user_or_group: DEMO\testuser
       permission: read
-  evx3300233_testvol2:
-    share_name: evx3300233_testvol2
-    path: "/evx3300233_testvol"
-    vserver: evx3300233
-    acls: []
