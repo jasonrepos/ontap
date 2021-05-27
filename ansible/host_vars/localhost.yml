@@ -49,9 +49,9 @@ Netapp_SVM:
     allowed_protocols: cifs
     comment: Test Platform - CIFS
 Netapp_SVM_LIFs:
-  evx3300233:
-    vserver: evx3300233
+  evx3300233-mgmt-201:
     interface_name: evx3300233-mgmt-201
+    vserver: evx3300233
     service_policy: default-management
     role: data
     protocols:
@@ -64,6 +64,21 @@ Netapp_SVM_LIFs:
     failover_group: Default
     firewall_policy: mgmt
     is_auto_revert: 'yes'
+  evx3300233-cifs-100:
+    interface_name: evx3300233-cifs-100
+    vserver: evx3300233
+    service_policy: default-data-files
+    role: data
+    protocols:
+    - cifs
+    address: 192.168.0.15
+    netmask: 255.255.255.0
+    home_node: cluster1-01
+    home_port: e0c
+    failover_policy: system-defined
+    failover_group: Default
+    firewall_policy: data
+    is_auto_revert: 'yes'
 Netapp_DNS:
   evx3300233:
     vserver: evx3300233
@@ -71,7 +86,6 @@ Netapp_DNS:
     - demo.netapp.com
     nameservers:
     - 192.168.0.253
-    - 192.168.0.252
 Netapp_Volumes:
   evx3300233_testvol:
     name: evx3300233_testvol
