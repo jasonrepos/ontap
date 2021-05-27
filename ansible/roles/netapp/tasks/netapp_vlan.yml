@@ -14,6 +14,7 @@
   with_subelements:
     - "{{ Netapp_VLAN }}"
     - vlan
+  connection: local
 
 # - name: Debug info
 #   debug:

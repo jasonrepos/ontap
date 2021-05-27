@@ -1,0 +1,4 @@
+---
+netapp_clusters:
+  hosts:
+    cluster1.demo.netapp.com:

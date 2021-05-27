@@ -1,5 +1,6 @@
-- hosts: localhost
+- hosts: all
   gather_facts: false
+  connection: local
   vars:
     netapp_username: admin
     netapp_password: Netapp1!
